@@ -7,7 +7,9 @@ import getters from './getters'
 Vue.use(Vuex)
 
 const state = {
-    //
+    actions: {},
+    selectedActionId: null,
+    users: {},
 }
 
 export default new Vuex.Store({
