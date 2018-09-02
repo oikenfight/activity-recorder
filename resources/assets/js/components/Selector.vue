@@ -12,10 +12,6 @@
                     <p class="help-block">{{ message }}</p>
                 </div>
             </div>
-
-            <div v-if="selected">
-
-            </div>
         </div>
     </div>
 </template>
