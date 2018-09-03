@@ -1,9 +1,6 @@
 <template>
     <div class="row">
         <div class="col-12 card text-center">
-            <div class="card-header">
-                Camera
-            </div>
             <div class="card-body">
                 <h5 class="card-title">Here is a video</h5>
             </div>
