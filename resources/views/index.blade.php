@@ -10,7 +10,7 @@
 @endsection
 
 {{-- titleSuffix --}}
-@section('titleSuffix', 'user.index')
+@section('titleSuffix', 'index')
 
 {{-- Content --}}
 @section('content')

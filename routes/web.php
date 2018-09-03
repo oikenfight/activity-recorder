@@ -19,3 +19,8 @@ Route::get('/', [
     'uses' => 'HomeController@index',
     'as' => 'index',
 ]);
+
+Route::get('/admin', [
+    'uses' => 'Admin\HomeController@index',
+    'as' => 'index',
+]);
