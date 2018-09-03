@@ -9,6 +9,7 @@ Vue.use(Vuex)
 const state = {
     actions: {},
     selectedActionId: null,
+    status: 'ready',    // 'ready' or 'started' or 'stopped' or 'done'
     users: {},
 }
 
