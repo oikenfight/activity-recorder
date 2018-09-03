@@ -8,8 +8,17 @@ export default new VueRouter ({
     // home
     {
       path: '/',
-      component: require('./components/Index'),
-      children: [],
+      // component: require('./components/Index'),
+      children: [
+        // {
+        //   path: '/record',
+        //   component: require('./components/Record'),
+        // },
+        // {
+        //   path: '/confirmation',
+        //   component: require('./components/Confirmation'),
+        // },
+      ],
     },
   ]
 })
