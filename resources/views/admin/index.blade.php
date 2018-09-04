@@ -12,6 +12,9 @@
 {{-- titleSuffix --}}
 @section('titleSuffix', 'user.index')
 
+{{-- includes --}}
+@include('layouts.yields.nav-admin')
+
 {{-- Content --}}
 @section('content')
     <div>
