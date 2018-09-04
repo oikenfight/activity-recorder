@@ -12,13 +12,13 @@ require('./bootstrap')
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-import router from './admin-router'
-import store from './store/admin/index'
+// import router from './admin-router'
+// import store from './store/admin/index'
 
-Vue.use(Vuex)
-
-new window.Vue({
-  router,
-  store,
-  render: h => h(require('./components/admin/Index')),
-}).$mount('#app')
+// Vue.use(Vuex)
+//
+// new window.Vue({
+//   router,
+//   store,
+//   render: h => h(require('./components/admin/Index')),
+// }).$mount('#app')
