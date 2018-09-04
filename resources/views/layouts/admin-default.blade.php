@@ -13,7 +13,13 @@
 </head>
 
 <body>
-@yield('content')
+
+    @yield('nav-admin')
+
+    <div class="container">
+        @yield('content')
+    </div>
+
 <script src="{{ mix('js/admin-app.js') }}"></script>
 @yield('additionalJs')
 </body>
