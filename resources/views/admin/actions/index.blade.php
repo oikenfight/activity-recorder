@@ -24,17 +24,14 @@
     <div class="row">
         <div class="col-sm-12">
             <ol class="breadcrumb">
-                <li><a href="{{ route('admin.index') }}">Top</a></li>
-                <li class="active">アクション</li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Top</a></li>
+                <li class="breadcrumb-item active">アクション</li>
             </ol>
         </div>
     </div>
 
     <div class="row message-and-tools-line">
-        <div class="col-md-11 pull-left">
-{{--            <p>全 {{ $actions->total() }} 件登録されています。</p>--}}
-        </div>
-        <div class="col-md-1 pull-right text-right">
+        <div class="col-sm-12 pull-right text-right">
             <a href="{{ route('admin.action.create') }}" class="btn btn-sm btn-primary"><i class="fa fa-plus-circle"></i> 追加</a>
         </div>
     </div>
