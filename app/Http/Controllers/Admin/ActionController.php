@@ -3,8 +3,10 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Admin;
 
+use App\Entities\Action;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Action\Request as ActionRequest;
 
 /**
  * Class ActionController
@@ -12,12 +14,17 @@ use App\Http\Controllers\Controller;
  */
 final class ActionController extends Controller
 {
+    // TODO: Controller から直接データブチ込む感じ汚いけど、まあ楽だから仕方ない。。余裕あったら直す。
+
     /**
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
-        return view('admin.actions.index');
+        $actions = Action::all();
+        return view('admin.actions.index', [
+            'actions' => $actions,
+        ]);
     }
 
     /**
@@ -28,29 +35,99 @@ final class ActionController extends Controller
         return view('admin.actions.create');
     }
 
-    public function store()
+    /**
+     * @param ActionRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function store(ActionRequest $request)
     {
-        return 'admin.actions.store';
+        $inputs = $request->only([
+            'action.name',
+            'action.japanese_name'
+        ]);
+        $action = Action::create([
+            'name' => $inputs['action']['name'],
+            'japanese_name' => $inputs['action']['japanese_name'],
+        ]);
+        return redirect()->route('admin.action.index')->with('success', '作成しました。');
     }
 
-    public function show()
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function show(Request $request)
     {
-        return view('admin.actions.show');
+        $actionId = $request->route('Action');
+        try {
+            $action = Action::find($actionId);
+        } catch (\Exception $e) {
+            return redirect()->route('admin.action.index')->with('error', '見つかりませんでした。');
+        }
+        return view('admin.actions.show', [
+            'action' => $action,
+        ]);
     }
 
-    public function edit()
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\Http\RedirectResponse|\Illuminate\View\View
+     */
+    public function edit(Request $request)
     {
-        return view('admin.actions.edit');
+        $actionId = $request->route('Action');
+        try {
+            $action = Action::find($actionId);
+        } catch (\Exception $e) {
+            return redirect()->route('admin.action.index')->with('error', '見つかりませんでした。');
+        }
+        return view('admin.actions.edit', [
+            'action' => $action,
+        ]);
     }
 
-    public function update()
+    /**
+     * @param ActionRequest $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function update(ActionRequest $request)
     {
-        return 'admin.actions.update';
+        $actionId = $request->route('Action');
+        try {
+            $action = Action::find($actionId);
+        } catch (\Exception $e) {
+            return redirect()->route('admin.action.index')->with('error', '見つかりませんでした。');
+        }
+        $inputs = $request->only([
+            'action.name',
+            'action.japanese_name'
+        ]);
+        $action->update([
+            'name' => $inputs['action']['name'],
+            'japanese_name' => $inputs['action']['japanese_name'],
+        ]);
+        return redirect()->route('admin.action.index')->with('success', '更新しました。');
     }
 
-    public function destroy()
+    /**
+     * @param Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function destroy(Request $request)
     {
-        return 'admin.actions.destroy';
+        $actionId = $request->route('Action');
+        try {
+            $action = Action::find($actionId);
+        } catch (\Exception $e) {
+            return redirect()->route('admin.action.index')->with('error', '見つかりませんでした。');
+        }
+        $action->delete();
+        return redirect()->route('admin.action.index')->with('success', '削除しました。');
     }
 }
 
