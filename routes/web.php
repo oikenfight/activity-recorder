@@ -51,7 +51,7 @@ Route::group(['prefix' => 'admin',], function () {
             'uses' => 'Admin\ActionController@show',
             'as' => 'admin.action.show'
         ]);
-        Route::get('/edit/{Action}}', [
+        Route::get('/edit/{Action}', [
             'uses' => 'Admin\ActionController@edit',
             'as' => 'admin.action.edit'
         ]);
