@@ -18,6 +18,6 @@
 {{-- Content --}}
 @section('content')
     <div>
-        <div id="app"></div>
+        This is admin.action.show
     </div>
 @endsection
