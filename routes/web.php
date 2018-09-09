@@ -26,6 +26,11 @@ Route::get('/', [
 //     'as' => 'index',
 // ]);
 
+Route::get('/test', [
+    'uses' => 'HomeController@test',
+    'as' => 'test',
+]);
+
 Route::group(['prefix' => 'admin',], function () {
     // Top
     Route::get('/', [
