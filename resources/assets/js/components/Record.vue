@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-12 card text-center">
             <div class="card-body">
-                <h5 class="card-title">Here is a video</h5>
+                <!-- アスペクト比は stair actions に合わせてある -->
+                <video id="local_video" class="embed-responsive embed-responsive-4by3" autoplay="1" style="border: 1px solid;"></video>
             </div>
         </div>
 
@@ -22,11 +23,15 @@
                 recording: false,
             }
         },
+        mounted () {
+            this.$store.dispatch('initRecording')
+        },
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
             ...mapGetters({
                 selectedActionId: 'selectedActionId',
                 status: 'status',
+                recorder: 'recorder',
             }),
             showStart () {
                 let selected = (this.selectedActionId !== null && typeof(this.selectedActionId) !== 'undefined')
@@ -41,10 +46,12 @@
             startRecord () {
                 console.log('here is startRecord method')
                 this.$store.dispatch('statusStarted')
+                this.recorder.start()
             },
             stopRecord () {
                 console.log('here is stopRecord method')
                 this.$store.dispatch('statusStopped')
+                this.recorder.stop()
             },
         }
 

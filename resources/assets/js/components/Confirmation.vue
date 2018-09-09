@@ -2,7 +2,8 @@
     <div class="row">
         <div class="col-12 card text-center">
             <div class="card-body">
-                <h5 class="card-title">Here is a took Video.</h5>
+                <!-- アスペクト比は stair actions に合わせてある -->
+                <video id="playback_video" class="embed-responsive embed-responsive-4by3" autoplay="1" style="border: 1px solid;"></video>
             </div>
         </div>
 
@@ -24,6 +25,7 @@
             ...mapGetters({
                 selectedActionId: 'selectedActionId',
                 status: 'status',
+                recorder: 'recorder',
             }),
         },
         methods: {
@@ -31,7 +33,7 @@
                 this.$store.dispatch('statusDone')
                 // TODO: add action to upload video.
             },
-        }
+        },
     }
 </script>
 

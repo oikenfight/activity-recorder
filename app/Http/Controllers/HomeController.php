@@ -19,4 +19,12 @@ final class HomeController extends Controller
     {
         return view('index');
     }
+
+    /**
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function test()
+    {
+        return view('test');
+    }
 }

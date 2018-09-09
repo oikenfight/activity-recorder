@@ -23,4 +23,12 @@ export default {
     STATUS_DONE (state) {
         state.status = 'done'
     },
+
+    INIT_RECORDING (state) {
+        state.recorder.init()
+    },
+
+    SAVE_VIDEO (state, blobUrl) {
+        state.blobUrl = blobUrl
+    },
 }
