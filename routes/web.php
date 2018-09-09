@@ -70,6 +70,38 @@ Route::group(['prefix' => 'admin',], function () {
         ]);
     });
 
+    // Collaborator
+    Route::group(['prefix' => 'collaborator'], function () {
+        Route::get('/', [
+            'uses' => 'Admin\CollaboratorController@index',
+            'as' => 'admin.collaborator.index'
+        ]);
+        Route::get('/create', [
+            'uses' => 'Admin\CollaboratorController@create',
+            'as' => 'admin.collaborator.create'
+        ]);
+        Route::post('/', [
+            'uses' => 'Admin\CollaboratorController@store',
+            'as' => 'admin.collaborator.store'
+        ]);
+        Route::get('/{Collaborator}', [
+            'uses' => 'Admin\CollaboratorController@show',
+            'as' => 'admin.collaborator.show'
+        ]);
+        Route::get('/edit/{Collaborator}', [
+            'uses' => 'Admin\CollaboratorController@edit',
+            'as' => 'admin.collaborator.edit'
+        ]);
+        Route::put('/{Collaborator}', [
+            'uses' => 'Admin\CollaboratorController@update',
+            'as' => 'admin.collaborator.update'
+        ]);
+        Route::delete('/{Collaborator}', [
+            'uses' => 'Admin\CollaboratorController@destroy',
+            'as' => 'admin.collaborator.destroy'
+        ]);
+    });
+
     // User
     Route::group(['prefix' => 'user'], function () {
         Route::get('/', [
@@ -88,7 +120,7 @@ Route::group(['prefix' => 'admin',], function () {
             'uses' => 'Admin\UserController@show',
             'as' => 'admin.user.show'
         ]);
-        Route::get('/edit/{User}}', [
+        Route::get('/edit/{User}', [
             'uses' => 'Admin\UserController@edit',
             'as' => 'admin.user.edit'
         ]);
