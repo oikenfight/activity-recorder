@@ -4,7 +4,6 @@ export default {
             .then(response => {
                   commit('ALL_ACTIONS', response.data.actions)
         })
-        // TODO: axios で actions を取得
     },
 
     setSelectedActionId ({commit}, actionId) {
@@ -27,4 +26,13 @@ export default {
     statusDone ({commit}) {
         commit('STATUS_DONE')
     },
+
+    initRecording ({commit}) {
+        commit('INIT_RECORDING')
+    },
+
+    saveVideo ({commit}, blobUrl) {
+        commit('SAVE_VIDEO', blobUrl)
+    }
 }
+
