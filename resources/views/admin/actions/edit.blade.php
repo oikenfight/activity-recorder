@@ -43,7 +43,7 @@
 
             <div class="form-group">
                 <div class="offset-sm-2 col-sm-9">
-                    <button type="submit" class="btn btn-primary">作成</button>
+                    <button type="submit" class="btn btn-primary">編集</button>
                 </div>
             </div>
 
