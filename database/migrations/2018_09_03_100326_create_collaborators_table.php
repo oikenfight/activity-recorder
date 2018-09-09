@@ -15,6 +15,7 @@ class CreateCollaboratorsTable extends Migration
     {
         Schema::create('collaborators', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('grade');
             $table->string('name');
             $table->string('name_read');
             $table->string('kana_name_read');
