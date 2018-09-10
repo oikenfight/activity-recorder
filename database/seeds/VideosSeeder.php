@@ -18,7 +18,12 @@ final class VideosSeeder extends Seeder
      */
     public function run()
     {
-        foreach ($this->initVideos() as $initVideo) {
+        $today = Carbon::today();
+
+        foreach ($this->initVideos() as $i => $initVideo) {
+            $today = Carbon::today()->subDay($i % 5);
+            $initVideo['created_at'] = $today;
+            $initVideo['updated_at'] = $today;
             DB::table('videos')->insert($initVideo);
         }
     }
@@ -34,23 +39,18 @@ final class VideosSeeder extends Seeder
         $actions = Action::all();
 
         foreach ($collaborators as $collaborator) {
-            $today = Carbon::today();
             foreach ($actions as $action) {
                 $initVideos[] = [
                     'name' => sprintf("init_%s_%s_1.webm", $action->name, $collaborator->name),
                     'action_id' => $action->id,
                     'post_collaborator_id' => $collaborator->id,
                     'act_collaborator_id' => $collaborator->id,
-                    'created_at' => $today->addDay(),
-                    'updated_at' => $today->addDay(),
                 ];
                 $initVideos[] = [
                     'name' => sprintf("init_%s_%s_2.webm", $action->name, $collaborator->name),
                     'action_id' => $action->id,
                     'post_collaborator_id' => $collaborator->id,
                     'act_collaborator_id' => $collaborator->id,
-                    'created_at' => $today->addDay(),
-                    'updated_at' => $today->addDay(),
                 ];
             }
         }
