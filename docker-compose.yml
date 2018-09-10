@@ -84,3 +84,5 @@ services:
     working_dir: "/myapp"
     env_file:
       - docker/artisan/artisan.env
+volumes:
+  db-data:
