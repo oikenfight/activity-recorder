@@ -1,5 +1,5 @@
 <?php
-/** @var \App\Entities\Action $action */
+/** @var \App\Entities\Video $video */
 ?>
 
 {{-- layout --}}
@@ -14,7 +14,7 @@
 @endsection
 
 {{-- titleSuffix --}}
-@section('titleSuffix', 'user.index')
+@section('titleSuffix', 'video.index')
 
 {{-- includes --}}
 @include('layouts.yields.nav-admin')
@@ -25,7 +25,7 @@
         <div class="col-sm-12">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="{{ route('admin.index') }}">Top</a></li>
-                <li class="breadcrumb-item"><a href="{{ route('admin.action.index') }}">アクション</a></li>
+                <li class="breadcrumb-item"><a href="{{ route('admin.video.index') }}">ビデオ</a></li>
                 <li class="breadcrumb-item active">編集</li>
             </ol>
         </div>
@@ -34,12 +34,12 @@
     <div class="row">
         <div class="col-sm-12">
             {!! Form::open([
-            'route' => ['admin.action.update', $action->id],
+            'route' => ['admin.video.update', $video->id],
             'method' => 'put',
             'class'=> 'form form-horizontal',
             ]) !!}
 
-            @include('admin.actions._form')
+            @include('admin.videos._form')
 
             <div class="form-group">
                 <div class="offset-sm-2 col-sm-9">

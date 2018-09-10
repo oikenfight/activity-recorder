@@ -18,6 +18,6 @@ final class DatabaseSeeder extends Seeder
         $this->call(ActionsSeeder::class);
         $this->call(CollaboratorsSeeder::class);
         $this->call(UsersSeeder::class);
-        // $this->call(VideosSeeder::class);
+        $this->call(VideosSeeder::class);
     }
 }

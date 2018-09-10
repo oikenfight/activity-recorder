@@ -14,13 +14,13 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">履歴</a>
+                    <a class="nav-link" href="{{ route('admin.video.index') }}">ビデオ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.action.index') }}">アクション</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('admin.user.index') }}">ユーザ</a>
+                    <a class="nav-link" href="{{ route('admin.collaborator.index') }}">協力者</a>
                 </li>
             </ul>
 

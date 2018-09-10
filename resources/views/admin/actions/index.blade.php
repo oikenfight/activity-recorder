@@ -65,7 +65,7 @@
                                     'method' => 'delete',
                                     'class'=> 'form form-inline',
                                 ]) !!}
-                                <a href="{{ route('admin.action.edit', $action->id) }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> 編集</a>
+                                <a href="{{ route('admin.action.edit', [$action->id]) }}" class="btn btn-sm btn-default"><i class="fa fa-edit"></i> 編集</a>
                                 <button type="submit" class="btn btn-sm btn-danger confirm-delete-btn" data-confirm-msg="{{ $action->name }} を削除してよろしいですか？" ><i class="fa fa-trash-o"></i> 削除</button>
                                 {!! Form::close() !!}
                             </td>

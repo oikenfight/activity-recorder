@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Model;
  *
  * @package App\Entities
  * @property int $id
+ * @property int $grade
  * @property string $name
  * @property string $name_read
  * @property string $kana_name_read
@@ -31,6 +32,7 @@ class Collaborator extends Model
      * @var array
      */
     protected $fillable = [
+        'grade',
         'name',
         'name_read',
         'kana_name_read',
@@ -49,6 +51,7 @@ class Collaborator extends Model
      * @var array
      */
     protected $casts = [
+        'grad' => 'integer',
         'name' => 'string',
         'name_read' => 'string',
         'kana_name_read' => 'string',
