@@ -14,7 +14,7 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">データ</a>
+                    <a class="nav-link" href="{{ route('admin.video.index') }}">ビデオ</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('admin.action.index') }}">アクション</a>
