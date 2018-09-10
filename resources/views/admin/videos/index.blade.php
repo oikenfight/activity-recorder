@@ -1,13 +1,7 @@
 <?php
 /** @var \App\Entities\Video[]|\Illuminate\Support\Collection|\Illuminate\Contracts\Pagination\LengthAwarePaginator $videos */
-
-// ここに書くのは間違ってるけど、これくらいいいよね。。めんどいし。
-$selectableQuery = [
-    'all' => '全て',
-    'action' => 'アクション',
-    'collaborator' => '協力者',
-    'date' => '日',
-];
+/** @var \App\Entities\Action $targetAction */
+/** @var \App\Entities\Collaborator $targetCollaborator */
 ?>
 
 {{-- layout --}}
@@ -60,6 +54,28 @@ $selectableQuery = [
     <div class="row" style="padding-top: 40px">
         @if(count($videos) and $videos instanceof Illuminate\Pagination\AbstractPaginator)
             <div class="col-sm-12">
+                <div class="pull-left">
+                    <h4 class="text-dark">
+                        @if($targetAction)
+                            アクション：{{ $targetAction->name }}
+                        @elseif($targetCollaborator)
+                            @if(Request::query('post_collaborator'))
+                                投稿協力：
+                            @elseif(Request::query('act_collaborator'))
+                                アクション協力：
+                            @else
+                                協力：
+                            @endif
+                            {{ $targetCollaborator->name }}
+                        @elseif(Request::query('date'))
+                            日付：{{ Request::query('date') }}
+                        @else
+                            全て
+                        @endif
+                        のビデオ（全 {{ $videos->total() }} 件）:
+                    </h4>
+
+                </div>
                 <div class="pull-right">
                     {!! $videos->appends(Request::all())->render() !!}
                 </div>
