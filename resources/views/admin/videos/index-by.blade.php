@@ -1,12 +1,5 @@
 <?php
 /** @var \App\Entities\Action[]|\App\Entities\Collaborator[]|\Illuminate\Support\Collection| $items */
-// ここに書くのは間違ってるけど、これくらいいいよね。。めんどいし。
-$selectableQuery = [
-    'all' => '全て',
-    'action' => 'アクション',
-    'collaborator' => '協力者',
-    'date' => '日',
-];
 ?>
 
 {{-- layout --}}
@@ -76,14 +69,14 @@ $selectableQuery = [
                     @foreach($items as $item)
                         <tr>
                             @if(Request::query('by')==='action')
-                                <td>{{ $item->name }}</td>
+                                <td><a href="{{ route('admin.video.index', ['action' => '?action='.$item->id]) }}">{{ $item->name }}</a></td>
                                 <td>{{ $item->video_num }}</td>
                             @elseif(Request::query('by')==='collaborator')
-                                <td>{{ $item->name }}</td>
-                                <td>{{ $item->post_video_num }}</td>
-                                <td>{{ $item->act_video_num }}</td>
+                                <td><a href="{{ route('admin.video.index', ['collaborator' => '?collaborator='.$item->id]) }}">{{ $item->name }}</a></td>
+                                <td><a href="{{ route('admin.video.index', ['post_collaborator' => '?post_collaborator='.$item->id]) }}">{{ $item->post_video_num }}</a></td>
+                                <td><a href="{{ route('admin.video.index', ['act_collaborator' => '?act_collaborator='.$item->id]) }}">{{ $item->post_video_num }}</a></td>
                             @else
-                                <td>{{ $item->date }}</td>
+                                <td><a href="{{ route('admin.video.index', ['date' => '?date='.$item->date]) }}">{{ $item->date }}</a></td>
                                 <td>{{ $item->video_num }}</td>
                             @endif
                         </tr>
