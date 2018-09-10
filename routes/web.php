@@ -38,6 +38,42 @@ Route::group(['prefix' => 'admin',], function () {
         'as' => 'admin.index',
     ]);
 
+    // Video
+    Route::group(['prefix' => 'video'], function () {
+        Route::get('/', [
+            'uses' => 'Admin\VideoController@index',
+            'as' => 'admin.video.index'
+        ]);
+        Route::get('/index{by?}', [
+            'uses' => 'Admin\VideoController@indexBy',
+            'as' => 'admin.video.indexBy'
+        ]);
+        Route::get('/create', [
+            'uses' => 'Admin\VideoController@create',
+            'as' => 'admin.video.create'
+        ]);
+        Route::post('/', [
+            'uses' => 'Admin\VideoController@store',
+            'as' => 'admin.video.store'
+        ]);
+        Route::get('/{Video}', [
+            'uses' => 'Admin\VideoController@show',
+            'as' => 'admin.video.show'
+        ]);
+        Route::get('/edit/{Video}', [
+            'uses' => 'Admin\VideoController@edit',
+            'as' => 'admin.video.edit'
+        ]);
+        Route::put('/{Video}', [
+            'uses' => 'Admin\VideoController@update',
+            'as' => 'admin.video.update'
+        ]);
+        Route::delete('/{Video}', [
+            'uses' => 'Admin\VideoController@destroy',
+            'as' => 'admin.video.destroy'
+        ]);
+    });
+
     // Action
     Route::group(['prefix' => 'action'], function () {
         Route::get('/', [
