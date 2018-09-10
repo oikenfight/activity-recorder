@@ -21,10 +21,44 @@ final class VideoController extends Controller
      */
     public function index(Request $request)
     {
-        $videos = Video::paginate(20);
+        $params = $request->query();
+
+        $targetAction = null;
+        $targetCollaborator = null;
+
+        $query = Video::query();
+
+        if (isset($params['action'])) {
+            $targetAction = DB::table('actions')->find($params['action']);
+            $query->where('action_id', $params['action']);
+        } else if (isset($params['collaborator'])) {
+            $targetCollaborator = DB::table('collaborators')->find($params['collaborator']);
+            $query->orWhere('post_collaborator_id', $params['collaborator'])
+            ->orWhere('post_collaborator_id', $params['collaborator']);
+        } else if (isset($params['post_collaborator'])) {
+            $targetCollaborator = DB::table('collaborators')->find($params['post_collaborator']);
+            $query->where('post_collaborator_id', $params['post_collaborator']);
+        } else if (isset($params['post_collaborator'])) {
+            $targetCollaborator = DB::table('collaborators')->find($params['act_collaborator']);
+            $query->where('act_collaborator_id', $params['act_collaborator']);
+        } else if (isset($params['date'])) {
+            $query->whereDate('created_at', $params['date']);
+        }
+
+        $videos = $query->paginate(30);
+
+        $selectableQuery = [
+            'all' => '全て',
+            'action' => 'アクション',
+            'collaborator' => '協力者',
+            'date' => '日',
+        ];
 
         return view('admin.videos.index', [
             'videos' => $videos,
+            'targetAction' => $targetAction,
+            'targetCollaborator' => $targetCollaborator,
+            'selectableQuery' => $selectableQuery,
         ]);
     }
 
@@ -55,16 +89,23 @@ final class VideoController extends Controller
                 $items = DB::table('videos')
                     ->select(DB::raw('date(created_at) AS date'), DB::raw('count(*) as video_num'))
                     ->groupBy('created_at', DB::raw('date'))
+                    ->orderBy('created_at', 'DESC')
                     ->get();
                 break;
             default:
                 redirect()->route('admin.video.index');
         }
 
-        // dd($items);
+        $selectableQuery = [
+            'all' => '全て',
+            'action' => 'アクション',
+            'collaborator' => '協力者',
+            'date' => '日',
+        ];
 
         return view('admin.videos.index-by', [
             'items' => $items,
+            'selectableQuery' => $selectableQuery,
         ]);
     }
 
