@@ -40,13 +40,13 @@ Route::group(['prefix' => 'admin',], function () {
 
     // Video
     Route::group(['prefix' => 'video'], function () {
-        Route::get('/', [
-            'uses' => 'Admin\VideoController@index',
-            'as' => 'admin.video.index'
-        ]);
-        Route::get('/index{by?}', [
+        Route::get('/index/{by?}', [
             'uses' => 'Admin\VideoController@indexBy',
             'as' => 'admin.video.indexBy'
+        ]);
+        Route::get('/{action?}{collaborator?}{post_collaborator?}{act_collaborator?}{date?}', [
+            'uses' => 'Admin\VideoController@index',
+            'as' => 'admin.video.index'
         ]);
         Route::get('/create', [
             'uses' => 'Admin\VideoController@create',
