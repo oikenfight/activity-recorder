@@ -32,6 +32,8 @@
         },
         beforeCreate () {
             this.$store.dispatch('allActions')
+            this.$store.dispatch('allCollaborators')
+            this.$store.dispatch('allGrades')
         },
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
