@@ -6,25 +6,42 @@ export default {
         })
     },
 
-    setSelectedActionId ({commit}, actionId) {
-        commit('SET_SELECTED_ACTION_ID', actionId)
+    allCollaborators ({commit}) {
+        axios.get('api/collaborators')
+        .then(response => {
+            commit('ALL_COLLABORATORS', response.data.collaborators)
+        })
+    },
+
+    allGrades ({commit}) {
+        axios.get('api/collaborators/grades')
+        .then(response => {
+            commit('ALL_GRADES', response.data.grades)
+        })
+    },
+
+    setInput ({commit}, selector) {
+        commit('SET_INPUT', selector)
+    },
+
+    statusInit ({commit}) {
+        commit('STATUS_INIT')
     },
 
     statusReady ({commit}) {
         commit('STATUS_READY')
     },
 
-    statusStarted ({commit}) {
-        console.log('here is statusStarted in action')
-        commit('STATUS_STARTED')
+    statusRecording ({commit}) {
+        commit('STATUS_RECORDING')
     },
 
-    statusStopped ({commit}) {
-        commit('STATUS_STOPPED')
+    statusRecorded ({commit}) {
+        commit('STATUS_RECORDED')
     },
 
-    statusDone ({commit}) {
-        commit('STATUS_DONE')
+    statusUploaded ({commit}) {
+        commit('STATUS_UPLOADED')
     },
 
     initRecording ({commit}) {
@@ -33,6 +50,6 @@ export default {
 
     saveVideo ({commit}, blobUrl) {
         commit('SAVE_VIDEO', blobUrl)
-    }
+    },
 }
 
