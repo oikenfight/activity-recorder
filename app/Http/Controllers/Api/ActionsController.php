@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Api;
 
+use App\Entities\Action;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -17,14 +18,7 @@ final class ActionsController extends Controller
      */
     public function all()
     {
-        // TODO: get from database
-        $actions = [
-            ['id' => 0, 'name' => 'name0'],
-            ['id' => 1, 'name' => 'name1'],
-            ['id' => 2, 'name' => 'name2'],
-            ['id' => 3, 'name' => 'name3'],
-        ];
-
+        $actions = Action::all();
         return [
             'actions' => $actions,
         ];
