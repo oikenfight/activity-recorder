@@ -21,3 +21,13 @@ Route::get('/actions', [
     'uses' => 'Api\ActionsController@all',
     'as' => 'api.actions.all',
 ]);
+
+Route::get('/collaborators', [
+    'uses' => 'Api\CollaboratorController@all',
+    'as' => 'api.collaborator.all',
+]);
+
+Route::get('/collaborators/grades', [
+    'uses' => 'Api\CollaboratorController@grades',
+    'as' => 'api.collaborator.grades',
+]);

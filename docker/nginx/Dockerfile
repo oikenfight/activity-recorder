@@ -15,5 +15,5 @@ RUN openssl genrsa 2048 > server.key \
  && openssl x509 -in server.csr -days 3650 -req -signkey server.key > server.crt \
  && cp server.crt /etc/nginx/server.crt \
  && cp server.key /etc/nginx/server.key \
- && chmod 755 -R /var/www/html \
+# && chmod 755 -R /myapp/public \
  && chmod 400 /etc/nginx/server.key

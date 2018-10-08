@@ -52,6 +52,8 @@ services:
       - 3306:3306
     env_file:
       - docker/mysql57/mysql57.env
+    volumes:
+      - db-data:/var/lib/mysql
     logging:
       options:
         tag: docker.mysql.{{.FullID}}

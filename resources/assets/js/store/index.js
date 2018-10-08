@@ -9,8 +9,19 @@ Vue.use(Vuex)
 
 const state = {
     actions: {},
-    selectedActionId: null,
-    status: 'ready',    // 'ready' or 'started' or 'stopped' or 'done'
+    collaborators: {},
+    grades: {},
+    input: {
+        action: {},
+        postCollaborator: {},
+        actCollaborator: {},
+    },
+    status: {
+        ready: false,
+        recording: false,
+        recorded: false,
+        uploaded: false,
+    },
     users: {},
     recorder: new Recorder(),
 }

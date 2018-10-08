@@ -29,28 +29,25 @@
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
             ...mapGetters({
-                selectedActionId: 'selectedActionId',
                 status: 'status',
                 recorder: 'recorder',
             }),
             showStart () {
-                let selected = (this.selectedActionId !== null && typeof(this.selectedActionId) !== 'undefined')
-                return selected && this.status === 'ready'
+                return this.status.ready && !this.status.recording
             },
             showStop () {
-                let selected = (this.selectedActionId !== null && typeof(this.selectedActionId) !== 'undefined')
-                return selected && this.status === 'started'
+                return this.status.recording
             },
         },
         methods: {
             startRecord () {
                 console.log('here is startRecord method')
-                this.$store.dispatch('statusStarted')
+                this.$store.dispatch('statusRecording')
                 this.recorder.start()
             },
             stopRecord () {
                 console.log('here is stopRecord method')
-                this.$store.dispatch('statusStopped')
+                this.$store.dispatch('statusRecorded')
                 this.recorder.stop()
             },
         }

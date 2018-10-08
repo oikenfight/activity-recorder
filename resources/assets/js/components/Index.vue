@@ -32,6 +32,8 @@
         },
         beforeCreate () {
             this.$store.dispatch('allActions')
+            this.$store.dispatch('allCollaborators')
+            this.$store.dispatch('allGrades')
         },
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
@@ -39,13 +41,14 @@
                 status: 'status',
             }),
             showRecord () {
-                return this.status === 'ready' || this.status === 'started'
+                return (this.status.ready && !this.status.recorded && !this.status.uploaded)
+                    || (this.status.recording && !this.status.recorded && !this.status.uploaded)
             },
             showConfirmation () {
-                return this.status === 'stopped'
+                return this.status.recorded && !this.status.uploaded
             },
             showThanks () {
-                return this.status === 'done'
+                return this.status.uploaded
             },
         },
     }
