@@ -86,12 +86,33 @@
                 },
             }
         },
+        mounted () {
+            if (this.action) {
+                this.selector.action = this.action
+            }
+            if (this.postCollaborator) {
+                this.selector.postCollaboratorGrade = this.postCollaborator.grade
+                this.selector.postCollaborator = this.postCollaborator
+            }
+            if (this.actCollaborator) {
+                this.selector.actCollaboratorGrade = this.actCollaborator.grade
+                this.selector.actCollaborator = this.actCollaborator
+            }
+            if (this.action && this.postCollaborator && this.actCollaborator) {
+                this.$store.dispatch('statusReady')
+            } else {
+                this.$store.dispatch('statusInit')
+            }
+        },
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
             ...mapGetters({
                 actions: 'actions',
                 collaborators: 'collaborators',
                 grades: 'grades',
+                action: 'action',
+                postCollaborator: 'postCollaborator',
+                actCollaborator: 'actCollaborator',
             }),
             postCollaborators () {
                 if (this.selector.postCollaboratorGrade !== null) {
@@ -147,6 +168,7 @@
                     console.log('set input')
                     console.log(this.selector)
                     this.$store.dispatch('setInput', this.selector)
+                    this.$store.dispatch('statusReady')
                 }
             },
         }
