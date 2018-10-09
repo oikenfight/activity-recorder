@@ -44,10 +44,6 @@ export default {
         commit('STATUS_UPLOADED')
     },
 
-    initRecording ({commit}) {
-        commit('INIT_RECORDING')
-    },
-
     uploadVideo ({commit}, formData) {
         axios.post('api/video', formData)
         .then(response => {
