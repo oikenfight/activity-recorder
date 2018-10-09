@@ -1,15 +1,21 @@
 <template>
-    <div class="row">
-        <div class="col-12 card text-center">
-            <div class="card-body">
-                <!-- アスペクト比は stair actions に合わせてある -->
-                <video id="local_video" class="embed-responsive embed-responsive-4by3" autoplay="1" style="border: 1px solid;"></video>
-            </div>
-        </div>
+    <div>
+        <!-- Selector component -->
+        <router-view></router-view>
 
-        <div class="col-12 text-center">
-            <button v-if="showStart" type="button" class="btn btn-light btn-lg" @click="startRecord"><i class="fa fa-play-circle fa-3x" style="color:#AAAAAA;"></i></button>
-            <button v-if="showStop" type="button" class="btn btn-light btn-lg" @click="stopRecord"><i class="fa fa-pause-circle fa-3x" style="color:#AAAAAA;"></i></button>
+        <!-- Main component -->
+        <div class="row">
+            <div class="col-12 card text-center">
+                <div class="card-body">
+                    <!-- アスペクト比は stair actions に合わせてある -->
+                    <video id="local_video" class="embed-responsive embed-responsive-4by3" autoplay="1" style="border: 1px solid;"></video>
+                </div>
+            </div>
+
+            <div class="col-12 text-center">
+                <button v-if="showStart" type="button" class="btn btn-light btn-lg" @click="startRecord"><i class="fa fa-play-circle fa-5x" style="color:#AAAAAA;"></i></button>
+                <button v-if="showStop" type="button" class="btn btn-light btn-lg" @click="stopRecord"><i class="fa fa-pause-circle fa-5x" style="color:#AAAAAA;"></i></button>
+            </div>
         </div>
     </div>
 </template>
@@ -24,7 +30,7 @@
             }
         },
         mounted () {
-            this.$store.dispatch('initRecording')
+            this.recorder.init()
         },
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
@@ -49,6 +55,7 @@
                 console.log('here is stopRecord method')
                 this.$store.dispatch('statusRecorded')
                 this.recorder.stop()
+                this.$router.push({ path: 'confirmation' });
             },
         }
 
