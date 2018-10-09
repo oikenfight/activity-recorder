@@ -60,7 +60,6 @@ final class CollaboratorController extends Controller
             }
             $grades[] = $grade;
         }
-        \Log::debug($grades);
         return [
             'grades' => $grades,
         ];
