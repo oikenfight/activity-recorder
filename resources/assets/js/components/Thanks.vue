@@ -18,7 +18,7 @@
         },
         methods: {
             checkMessage () {
-                this.$store.dispatch('statusReady')
+                this.$store.dispatch('statusInit')
             },
         }
     }
