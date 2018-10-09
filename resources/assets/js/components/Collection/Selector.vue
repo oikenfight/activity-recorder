@@ -118,7 +118,6 @@
             }),
             postCollaborators () {
                 if (this.selector.postCollaboratorGrade !== null) {
-                // if (this.selector.postCollaboratorGrade !== null && typeof(this.selector.postCollaboratorGrade) !== 'undefined') {
                     console.log('here')
                     console.log(this.selector.postCollaboratorGrade)
                     console.log(this.collaborators)
@@ -131,7 +130,6 @@
             },
             actCollaborators () {
                 if (this.selector.actCollaboratorGrade !== null) {
-                // if (this.selector.actCollaboratorGrade !== null && typeof(this.selector.actCollaboratorGrade) !== 'undefined') {
                     return this.collaborators.filter((collaborator) => {
                         return collaborator.grade === this.selector.actCollaboratorGrade
                     })
@@ -145,6 +143,7 @@
                 let collaborator = this.selector.postCollaborator
                 if (collaborator && this.selector.postCollaboratorGrade !== collaborator.grade) {
                     this.selector.postCollaborator = null
+                    this.$store.dispatch('statusInit')
                 }
                 this.setInput()
             },
@@ -158,6 +157,7 @@
                 let collaborator = this.selector.actCollaborator
                 if (collaborator && this.selector.actCollaboratorGrade !== collaborator.grade) {
                     this.selector.actCollaborator = null
+                    this.$store.dispatch('statusInit')
                 }
                 this.setInput()
             },
