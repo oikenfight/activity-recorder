@@ -12,9 +12,15 @@ export default {
     },
 
     SET_INPUT (state, selector) {
-        state.input.action = selector.action
-        state.input.postCollaborator = selector.postCollaborator
-        state.input.actCollaborator = selector.actCollaborator
+        if (selector.action) {
+            state.input.action = selector.action
+        }
+        if (selector.postCollaborator) {
+            state.input.postCollaborator = selector.postCollaborator
+        }
+        if (selector.actCollaborator) {
+            state.input.actCollaborator = selector.actCollaborator
+        }
     },
 
     STATUS_INIT (state) {
@@ -60,9 +66,5 @@ export default {
             recorded: true,
             uploaded: true,
         }
-    },
-
-    INIT_RECORDING (state) {
-        state.recorder.init()
     },
 }
