@@ -47,9 +47,8 @@ export default class Recorder {
             // 録画が終了したタイミングで呼び出される
             console.log("data available, start playback");
             let videoBlob = new Blob([evt.data], { type: evt.data.type });
-            let blobUrl = window.URL.createObjectURL(videoBlob);
             self.setVideoBlob(videoBlob)
-            self.setPlayBlobUrl(blobUrl)
+            self.setPlayBlobUrl()
         }
 
         // 録画開始
@@ -77,8 +76,13 @@ export default class Recorder {
     }
 
     // 撮影したものを再生
-    setPlayBlobUrl (blobUrl) {
+    setPlayBlobUrl () {
         console.log('here is setPlayUrl method')
+
+        if (!this.videoBlob) {
+            throw new Error('blob is not set')
+        }
+        let blobUrl = window.URL.createObjectURL(this.videoBlob);
         let playbackVideo =  document.getElementById('playback_video')
         if (blobUrl) {
             playbackVideo.src = blobUrl;
@@ -87,7 +91,6 @@ export default class Recorder {
 
     // 録画したものをクリア
     clear () {
-        this.localStream = null
         this.recorder = null
         this.videoBlob = null
     }
