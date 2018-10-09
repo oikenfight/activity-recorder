@@ -48,8 +48,11 @@ export default {
         commit('INIT_RECORDING')
     },
 
-    saveVideo ({commit}, blobUrl) {
-        commit('SAVE_VIDEO', blobUrl)
+    uploadVideo ({commit}, formData) {
+        axios.post('api/video', formData)
+        .then(response => {
+            commit('STATUS_UPLOADED')
+        })
     },
 }
 
