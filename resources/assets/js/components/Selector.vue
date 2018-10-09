@@ -86,19 +86,21 @@
                 },
             }
         },
-        mounted () {
-            if (this.action) {
+        created () {
+            if (this.isSetAction()) {
                 this.selector.action = this.action
             }
-            if (this.postCollaborator) {
+            if (this.isSetPostCollaborator()) {
                 this.selector.postCollaboratorGrade = this.postCollaborator.grade
                 this.selector.postCollaborator = this.postCollaborator
             }
-            if (this.actCollaborator) {
+            if (this.isSetPostCollaborator()) {
                 this.selector.actCollaboratorGrade = this.actCollaborator.grade
                 this.selector.actCollaborator = this.actCollaborator
             }
-            if (this.action && this.postCollaborator && this.actCollaborator) {
+        },
+        mounted () {
+            if (this.isSetAction() && this.isSetPostCollaborator() && this.isSetPostCollaborator()) {
                 this.$store.dispatch('statusReady')
             } else {
                 this.$store.dispatch('statusInit')
@@ -116,20 +118,25 @@
             }),
             postCollaborators () {
                 if (this.selector.postCollaboratorGrade !== null) {
+                // if (this.selector.postCollaboratorGrade !== null && typeof(this.selector.postCollaboratorGrade) !== 'undefined') {
+                    console.log('here')
+                    console.log(this.selector.postCollaboratorGrade)
+                    console.log(this.collaborators)
                     return this.collaborators.filter((collaborator) => {
                         return collaborator.grade === this.selector.postCollaboratorGrade
                     })
                 } else {
-                    return false
+                    return []
                 }
             },
             actCollaborators () {
                 if (this.selector.actCollaboratorGrade !== null) {
+                // if (this.selector.actCollaboratorGrade !== null && typeof(this.selector.actCollaboratorGrade) !== 'undefined') {
                     return this.collaborators.filter((collaborator) => {
                         return collaborator.grade === this.selector.actCollaboratorGrade
                     })
                 } else {
-                    return false
+                    return []
                 }
             },
         },
@@ -170,6 +177,15 @@
                     this.$store.dispatch('setInput', this.selector)
                     this.$store.dispatch('statusReady')
                 }
+            },
+            isSetAction () {
+                return Object.keys(this.action).length !== 0 && this.action.constructor === Object
+            },
+            isSetPostCollaborator () {
+                return Object.keys(this.postCollaborator).length !== 0 && this.postCollaborator.constructor === Object
+            },
+            isSetActCollaborator () {
+                return Object.keys(this.actCollaborator).length !== 0 && this.actCollaborator.constructor === Object
             },
         }
     }

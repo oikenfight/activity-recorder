@@ -32,7 +32,9 @@
         computed: {
             // store の getter をローカルにマッピングさせることで算出可能にしている。
             ...mapGetters({
-                selectedActionId: 'selectedActionId',
+                action: 'action',
+                postCollaborator: 'postCollaborator',
+                actCollaborator: 'actCollaborator',
                 status: 'status',
                 recorder: 'recorder',
             }),
@@ -51,9 +53,12 @@
                 this.playInit()
             },
             upload () {
-                // TODO: add action to upload video.
-
-                this.$store.dispatch('statusUploaded')
+                let formData = new FormData()
+                formData.append('blob', this.recorder.getVideoBlob(), 'blob.webm')
+                formData.append('action_id', this.action.id)
+                formData.append('post_collaborator_id', this.postCollaborator.id)
+                formData.append('act_collaborator_id', this.actCollaborator.id)
+                this.$store.dispatch('uploadVideo', formData)
             },
         },
     }

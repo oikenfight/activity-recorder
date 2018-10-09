@@ -31,3 +31,8 @@ Route::get('/collaborators/grades', [
     'uses' => 'Api\CollaboratorController@grades',
     'as' => 'api.collaborator.grades',
 ]);
+
+Route::post('/video', [
+    'uses' => 'Api\VideoController@upload',
+    'as' => 'api.video.upload',
+]);

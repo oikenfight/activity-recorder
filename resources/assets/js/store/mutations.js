@@ -65,8 +65,4 @@ export default {
     INIT_RECORDING (state) {
         state.recorder.init()
     },
-
-    SAVE_VIDEO (state, blobUrl) {
-        state.blobUrl = blobUrl
-    },
 }
