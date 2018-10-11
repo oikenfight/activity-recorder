@@ -23,7 +23,7 @@ export default class Recorder {
         navigator.mediaDevices.getUserMedia(constraints)
             .then((stream) => {
                 this.localStream  = stream;
-                localVideo.src = window.URL.createObjectURL(stream);
+                localVideo.srcObject = stream;
             })
             .catch((err) => {
                 window.alert(err.name + ': ' + err.message);
@@ -86,6 +86,7 @@ export default class Recorder {
         let playbackVideo =  document.getElementById('playback_video')
         if (blobUrl) {
             playbackVideo.src = blobUrl;
+            // playbackVideo.srcObject = this.videoBlob;
         }
     }
 
