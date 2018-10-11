@@ -39,10 +39,10 @@
             </div>
 
             <div class="col-12 text-center">
-                <button type="button" class="btn btn-light btn-lg" @click="undo"><i class="fa fa-undo fa-5x" style="color:#AAAAAA;"></i></button>
-                <button v-if="!playing" type="button" class="btn btn-light btn-lg" @click="startPlay"><i class="fa fa-play-circle fa-5x" style="color:#38c172;"></i></button>
-                <button v-if="playing" type="button" class="btn btn-light btn-lg" @click="stopPlay"><i class="fa fa-pause-circle fa-5x" style="color:#38c172;"></i></button>
-                <button type="button" class="btn btn-light btn-lg" @click="upload"><i class="fa fa-arrow-circle-o-up fa-5x" style="color:#38c172;"></i></button>
+                <button type="button" class="btn btn-light btn-lg" @click="undo"><i class="fa fa-undo fa-3x" style="color:#AAAAAA;"></i></button>
+                <button v-if="!playing" type="button" class="btn btn-light btn-lg" @click="startPlay"><i class="fa fa-play-circle fa-3x" style="color:#38c172;"></i></button>
+                <button v-if="playing" type="button" class="btn btn-light btn-lg" @click="stopPlay"><i class="fa fa-pause-circle fa-3x" style="color:#38c172;"></i></button>
+                <button type="button" class="btn btn-light btn-lg" @click="upload"><i class="fa fa-arrow-circle-o-up fa-3x" style="color:#38c172;"></i></button>
             </div>
         </div>
     </div>
