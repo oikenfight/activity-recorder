@@ -2,33 +2,30 @@
     <div class="row justify-content-center" style="padding-top: 30px">
         <div class="col-10 justify-content-center">
 
-            <div class="form-group">
-                <label for="action-form">Action</label>
-                <select v-model="selector.action" class="form-control form-control-lg" :class="{'is-invalid': !selector.action}" id="action-form">
-                    <option v-if="!selector.action" value="null">Select Me</option>
-                    <option v-for="action in actions" :value="action">{{ action.name }}</option>
-                </select>
-                <div v-if="!selector.action" class="invalid-feedback">
-                    <p class="help-block">{{ messages.action }}</p>
-                </div>
-            </div>
-
-            <!-- Photographer -->
             <div class="form-row">
-                <div class="form-group col-md-6">
-                    <!-- grade -->
-                    <label for="post-collaborator-grade-form">grade</label>
-                    <select v-model="selector.postCollaboratorGrade" @change="selectPostCollaboratorGrade" class="form-control form-control-lg" :class="{'is-invalid': !selector.postCollaboratorGrade}" id="post-collaborator-grade-form">
-                        <option v-if="!selector.postCollaboratorGrade" value="null">Select Me</option>
+                <!-- Action -->
+                <div class="col-12">
+                    <label for="action-form">アクション名</label>
+                    <select v-model="selector.action" class="form-control" :class="{'is-invalid': !selector.action}" id="action-form">
+                        <option v-if="!selector.action" value="null">Select Me</option>
+                        <option v-for="action in actions" :value="action">{{ action.name }}</option>
+                    </select>
+                    <div v-if="!selector.action" class="invalid-feedback">
+                        <p class="help-block">{{ messages.action }}</p>
+                    </div>
+                </div>
+
+                <!-- Photographer -->
+                <div class="col-3">
+                    <label for="post-collaborator-grade-form">学年</label>
+                    <select v-model="selector.postCollaboratorGrade" @change="selectPostCollaboratorGrade" class="form-control" :class="{'is-invalid': !selector.postCollaboratorGrade}" id="post-collaborator-grade-form">
+                        <option v-if="!selector.postCollaboratorGrade" value="null">--</option>
                         <option v-for="grade in grades" :value="grade.grade">{{ grade.name }}</option>
                     </select>
-                    <div v-if="!selector.postCollaboratorGrade" class="invalid-feedback">
-                        <p class="help-block">{{ messages.postCollaboratorGrade }}</p>
-                    </div>
-
-                    <!-- collaborator -->
-                    <label for="post-collaborator-form">Photographer</label>
-                    <select v-model="selector.postCollaborator" @change="selectPostCollaborator" class="form-control form-control-lg" :class="{'is-invalid': !selector.postCollaborator}" id="post-collaborator-form">
+                </div>
+                <div class="col-9">
+                    <label for="post-collaborator-form">撮影者</label>
+                    <select v-model="selector.postCollaborator" @change="selectPostCollaborator" class="form-control" :class="{'is-invalid': !selector.postCollaborator}" id="post-collaborator-form">
                         <option v-if="!selector.postCollaborator" value="null">Select Me</option>
                         <option v-for="collaborator in postCollaborators" :value="collaborator">{{ collaborator.name }}</option>
                     </select>
@@ -38,20 +35,16 @@
                 </div>
 
                 <!-- Actor -->
-                <div class="form-group col-md-6">
-                    <!-- grade -->
-                    <label for="act-collaborator-grade-form">grade</label>
-                    <select v-model="selector.actCollaboratorGrade" @change="selectActCollaboratorGrade" class="form-control form-control-lg" :class="{'is-invalid': !selector.actCollaboratorGrade}" id="act-collaborator-grade-form">
-                        <option v-if="!selector.actCollaboratorGrade" value="null">Select Me</option>
+                <div class="col-3">
+                    <label for="act-collaborator-grade-form">学年</label>
+                    <select v-model="selector.actCollaboratorGrade" @change="selectActCollaboratorGrade" class="form-control" :class="{'is-invalid': !selector.actCollaboratorGrade}" id="act-collaborator-grade-form">
+                        <option v-if="!selector.actCollaboratorGrade" value="null">--</option>
                         <option v-for="grade in grades" :value="grade.grade">{{ grade.name }}</option>
                     </select>
-                    <div v-if="!selector.actCollaboratorGrade" class="invalid-feedback">
-                        <p class="help-block">{{ messages.actCollaboratorGrade }}</p>
-                    </div>
-
-                    <!-- collaborator -->
-                    <label for="act-collaborator-form">Actor</label>
-                    <select v-model="selector.actCollaborator" @change="selectActCollaborator" class="form-control form-control-lg" :class="{'is-invalid': !selector.actCollaborator}" id="act-collaborator-form">
+                </div>
+                <div class="col-9">
+                    <label for="act-collaborator-form">行動者</label>
+                    <select v-model="selector.actCollaborator" @change="selectActCollaborator" class="form-control" :class="{'is-invalid': !selector.actCollaborator}" id="act-collaborator-form">
                         <option v-if="!selector.actCollaborator" value="null">Select Me</option>
                         <option v-for="collaborator in actCollaborators" :value="collaborator">{{ collaborator.name }}</option>
                     </select>
