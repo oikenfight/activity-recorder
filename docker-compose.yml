@@ -39,7 +39,7 @@ services:
     links:
       - phpfpm:phpfpm
     ports:
-      - 8882:80
+      - 80:80
       - 443:443
     logging:
       options:
