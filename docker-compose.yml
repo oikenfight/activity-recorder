@@ -7,6 +7,7 @@ services:
       dockerfile: docker/workspace/Dockerfile
     volumes:
       - ./:/myapp
+      - ../{path/to/storage_mount_dir}/:/myapp/storage/app/public/actions/
     working_dir: "/myapp"
   php:
     depends_on:
