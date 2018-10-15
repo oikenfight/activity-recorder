@@ -9,25 +9,25 @@ export default new VueRouter ({
     // home
     {
       path: '/',
-      component: require('./components/collection/Index'),
+      component: require('./components/Collection/Index'),
       children: [
         {
           path: '',
-          component: require('./components/collection/Record'),
+          component: require('./components/Collection/Record'),
           children: [
             {
               path: '',
-              component: require('./components/collection/Selector'),
+              component: require('./components/Collection/Selector'),
             }
           ],
         },
         {
           path: '/confirmation',
-          component: require('./components/collection/Confirmation'),
+          component: require('./components/Collection/Confirmation'),
         },
         {
           path: '/thanks',
-          component: require('./components/collection/Thanks'),
+          component: require('./components/Collection/Thanks'),
         },
       ],
     },
