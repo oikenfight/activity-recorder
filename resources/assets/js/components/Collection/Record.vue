@@ -7,8 +7,8 @@
         <div class="row" style="padding-top: 20px;">
             <div class="col-12 card text-center">
                 <div class="card-body">
-                    <div v-if="showStop" class="float-right mr-3>
-                        <h3 class="text-danger"Timer: {{ recordingTime }}</h3>
+                    <div v-if="showStop" class="float-right mr-3">
+                        <h3 class="text-danger">Timer: {{ recordingTime }}</h3>
                     </div>
                     <!-- アスペクト比は stair actions に合わせてある -->
                     <video id="local_video" class="embed-responsive embed-responsive-4by3" autoplay="1" style="border: 1px solid;"></video>
