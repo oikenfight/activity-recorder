@@ -15,7 +15,13 @@ export default class Recorder {
         let constraints = {
             audio: false, // 音声はいらない
             video: {
-                facingMode: 'environment' // スマホのバックカメラを使用
+                facingMode: 'environment', // スマホのバックカメラを使用
+                advanced: [
+                    // このリスト内での値の直指定はexactと同じになる
+                    { aspectRatio: 1.3333333333 },
+                    // widthだけOKでも、heightがNGなら、両方NGになる
+                    { width: 1920, height: 1280 },
+                ],
             }
         };
 
