@@ -12,9 +12,6 @@
                 <li class="list-group-item text-center">
                     <a class="text-secondary" href="/admin">管理画面へ</a>
                 </li>
-                <li class="list-group-item text-center">
-                    <a class="text-secondary" href="/admin">管理画面へ</a>
-                </li>
             </ul>
         </div>
     </div>

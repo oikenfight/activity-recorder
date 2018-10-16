@@ -6,7 +6,7 @@
                 <!-- Action -->
                 <div class="col-12">
                     <label for="action-form">アクション名</label>
-                    <select v-model="selector.action" class="form-control" :class="{'is-invalid': !selector.action}" id="action-form">
+                    <select v-model="selector.action" @change="selectAction" class="form-control" :class="{'is-invalid': !selector.action}" id="action-form">
                         <option v-if="!selector.action" value="null">Select Me</option>
                         <option v-for="action in actions" :value="action">{{ action.name }}</option>
                     </select>
@@ -132,6 +132,9 @@
             },
         },
         methods: {
+            selectAction () {
+                this.setInput()
+            },
             selectPostCollaboratorGrade () {
                 let collaborator = this.selector.postCollaborator
                 if (collaborator && this.selector.postCollaboratorGrade !== collaborator.grade) {
