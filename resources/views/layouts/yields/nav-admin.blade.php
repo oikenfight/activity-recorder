@@ -25,7 +25,7 @@
             </ul>
 
             <ul class="navbar-nav ml-auto">
-                <li class="dropdown-item"><a class="text-secondary" href="/admin">一般画面へ</a></li>
+                <li class="dropdown-item"><a class="text-secondary" href="/">一般画面へ</a></li>
             </ul>
         </div>
     </nav>
